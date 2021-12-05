@@ -51,14 +51,36 @@ predict_valid <- predict(tree, valid_df)
 accuracy(predict_valid, valid_df$price)
 
 
-# Predicting new records
+# Trying a shallower tree
+shallowtree <- rpart(price ~ ., data = train_df, method = 'anova', maxdepth = 3)
+prp(shallowtree)
+
+predict_train_shallow <- predict(shallowtree, train_df)
+accuracy(predict_train_shallow, train_df$price)
+
+predict_valid <- predict(tree, valid_df)
+accuracy(predict_valid, valid_df$price)
+
+
+# Predicting new records - full tree
 houses_test <- read.csv('house_test_3.csv', header = TRUE)
 t(t(names(houses_test)))
+head(houses_test)
 
 houses_test <- houses_test[, c(7:19)]
 t(t(names(houses_test)))
 
 houses_test_prediction <- predict(tree, newdata = houses_test)
 houses_test_prediction
+
+
+# Predicting new records - shallow tree
+houses_test_prediction_shallow <- predict(shallowtree, newdata = houses_test)
+houses_test_prediction_shallow
+
+
+# for these three specific records, the shallow tree returns the same predictions
+# as the full length tree.
+# RMSE is lower for the full length tree indicating less error.
 
 
