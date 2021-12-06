@@ -43,7 +43,7 @@ t(t(names(houses)))
 # necessary for our model. We removed all variables except bedrooms, bathrooms,
 # square footage of the home and house, number of floors, whether it was a 
 # waterfront property or not, the number of times it was viewed, condition, 
-# grade based on King County gradign system, square footage of the house apart 
+# grade based on King County grading system, square footage of the house apart 
 # from the basement, square footage of the basement, the year built, the year
 # renovated, and the price. 
 
